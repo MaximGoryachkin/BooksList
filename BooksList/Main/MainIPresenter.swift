@@ -21,7 +21,13 @@ final class MainPresenter: MainViewOutputProtocol, MainInteractorOutputProtocol 
     }
     
     func booksDidRecieve(with books: [Book]) {
-        view.reloadMainView()
+        let section = MainSectionViewModel()
+        
+        books.forEach { book in
+            let viewModel = MainCellViewModel(book: book)
+            section.rows.append(viewModel)
+        }
+        view.reloadMainView(for: section)
     }
     
 }

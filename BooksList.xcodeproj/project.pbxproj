@@ -17,6 +17,8 @@
 		89A0563A2816CFAC0048F9A6 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A056392816CFAC0048F9A6 /* MainConfigurator.swift */; };
 		89A0563C2816CFB60048F9A6 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A0563B2816CFB60048F9A6 /* MainRouter.swift */; };
 		89A0563E2816CFD10048F9A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A0563D2816CFD10048F9A6 /* MainViewController.swift */; };
+		89A05641281815C90048F9A6 /* MainCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A05640281815C90048F9A6 /* MainCellTableViewCell.swift */; };
+		89A05643281817DB0048F9A6 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A05642281817DB0048F9A6 /* MainCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		89A056392816CFAC0048F9A6 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
 		89A0563B2816CFB60048F9A6 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		89A0563D2816CFD10048F9A6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		89A05640281815C90048F9A6 /* MainCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellTableViewCell.swift; sourceTree = "<group>"; };
+		89A05642281817DB0048F9A6 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		89A056322816CF650048F9A6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				89A0563F281815630048F9A6 /* MainCell */,
 				89A0563D2816CFD10048F9A6 /* MainViewController.swift */,
 				89A056352816CF8E0048F9A6 /* MainIPresenter.swift */,
 				89A056372816CF9A0048F9A6 /* MainInteractor.swift */,
@@ -85,6 +90,15 @@
 				89A0563B2816CFB60048F9A6 /* MainRouter.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		89A0563F281815630048F9A6 /* MainCell */ = {
+			isa = PBXGroup;
+			children = (
+				89A05640281815C90048F9A6 /* MainCellTableViewCell.swift */,
+				89A05642281817DB0048F9A6 /* MainCellViewModel.swift */,
+			);
+			name = MainCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +171,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A05641281815C90048F9A6 /* MainCellTableViewCell.swift in Sources */,
+				89A05643281817DB0048F9A6 /* MainCellViewModel.swift in Sources */,
 				89A056102816C8270048F9A6 /* AppDelegate.swift in Sources */,
 				89A0563C2816CFB60048F9A6 /* MainRouter.swift in Sources */,
 				89A056122816C8270048F9A6 /* SceneDelegate.swift in Sources */,

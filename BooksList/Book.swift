@@ -11,13 +11,13 @@ struct Book {
     let name: String
     let author: String
     let description: String?
-    let image: Data?
+    let imageData: Data?
     
     static func getData() -> [Book] {
         [
-            Book(name: "Граф Монте-Кристо", author: "Александр Дюма", description: nil, image: nil),
-            Book(name: "Чужак", author: "Макс Фрай", description: nil, image: nil),
-            Book(name: "Сто лет одиночества", author: "Габриэль Гарсиа Маркес", description: nil, image: nil)
+            Book(name: "Граф Монте-Кристо", author: "Александр Дюма", description: nil, imageData: nil),
+            Book(name: "Чужак", author: "Макс Фрай", description: nil, imageData: nil),
+            Book(name: "Сто лет одиночества", author: "Габриэль Гарсиа Маркес", description: nil, imageData: nil)
         ]
     }
 }
