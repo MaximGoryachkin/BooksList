@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MainCellViewModelProtocol {
+protocol BooksListCellViewModelProtocol {
     var name: String { get set }
     var author: String { get set }
     var description: String? { get set }
@@ -16,10 +16,10 @@ protocol MainCellViewModelProtocol {
 }
 
 protocol SectionRowRepresentable {
-    var rows: [MainCellViewModelProtocol] { get set }
+    var rows: [BooksListCellViewModelProtocol] { get set }
 }
 
-class MainCellViewModel: MainCellViewModelProtocol {
+class BooksListCellViewModel: BooksListCellViewModelProtocol {
     var name: String
     var author: String
     var description: String?
@@ -33,6 +33,6 @@ class MainCellViewModel: MainCellViewModelProtocol {
     }
 }
 
-class MainSectionViewModel: SectionRowRepresentable {
-    var rows: [MainCellViewModelProtocol] = []
+class BooksListSectionViewModel: SectionRowRepresentable {
+    var rows: [BooksListCellViewModelProtocol] = []
 }

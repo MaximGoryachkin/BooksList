@@ -12,6 +12,8 @@ struct Book {
     let author: String
     let description: String?
     let imageData: Data?
+//    let beginDate: Date
+//    let endDate: Date
     
     static func getData() -> [Book] {
         [

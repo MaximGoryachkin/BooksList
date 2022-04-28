@@ -8,22 +8,25 @@
 import UIKit
 
 protocol CellModelRepresentable {
-    var viewModel: MainCellViewModelProtocol? { get set }
+    var viewModel: BooksListCellViewModelProtocol? { get set }
 }
 
-class MainCellTableViewCell: UITableViewCell, CellModelRepresentable {
-    var viewModel: MainCellViewModelProtocol? {
+class BooksListCellTableViewCell: UITableViewCell, CellModelRepresentable {
+    static let identifier = "MainCellTableViewCell"
+    
+    var viewModel: BooksListCellViewModelProtocol? {
         didSet {
             updateViews()
         }
     }
-    
+
     private func updateViews() {
-        guard let viewModel = viewModel as? MainCellViewModel else { return }
+        guard let viewModel = viewModel as? BooksListCellViewModel else { return }
         var content = defaultContentConfiguration()
         content.text = viewModel.name
         content.secondaryText = viewModel.author
         content.image = UIImage(systemName: "character.book.closed")
         contentConfiguration = content
+        accessoryType = .disclosureIndicator
     }
 }
