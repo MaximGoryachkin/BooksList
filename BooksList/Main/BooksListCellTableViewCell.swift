@@ -25,7 +25,7 @@ class BooksListCellTableViewCell: UITableViewCell, CellModelRepresentable {
         var content = defaultContentConfiguration()
         content.text = viewModel.name
         content.secondaryText = viewModel.author
-        content.image = UIImage(systemName: "character.book.closed")
+        content.image = viewModel.imageData ?? UIImage(systemName: "character.book.closed")
         contentConfiguration = content
         accessoryType = .disclosureIndicator
     }

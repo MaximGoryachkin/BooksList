@@ -6,12 +6,14 @@
 //
 
 import Foundation
+// Need for image test
+import UIKit
 
 protocol BooksListCellViewModelProtocol {
     var name: String { get set }
     var author: String { get set }
     var description: String? { get set }
-    var imageData: Data? { get set }
+    var imageData: UIImage? { get set }
     init(book: Book)
 }
 
@@ -23,7 +25,7 @@ class BooksListCellViewModel: BooksListCellViewModelProtocol {
     var name: String
     var author: String
     var description: String?
-    var imageData: Data?
+    var imageData: UIImage?
     
     required init(book: Book) {
         self.name = book.name
