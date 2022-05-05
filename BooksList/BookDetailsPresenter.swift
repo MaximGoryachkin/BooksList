@@ -10,15 +10,15 @@ import Foundation
 final class BookDetailsPresenter: BookDetailsViewOutputProtocol, BookDetailsInteractorOutputProtocol {
     unowned let view: BookDetailsViewInputProtocol
     var interactor: BookDetailsInteractorInputProtocol!
-    
+
     init(view: BookDetailsViewInputProtocol) {
         self.view = view
     }
-    
+
     func showBookInfo() {
         interactor.provideBookDetails()
     }
-    
+
     func receiveBookDetails(with book: Book) {
         view.displayBookInfo(from: book)
     }

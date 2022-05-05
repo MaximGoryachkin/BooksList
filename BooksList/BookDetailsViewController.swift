@@ -19,14 +19,24 @@ protocol BookDetailsViewOutputProtocol {
 final class BookDetailsViewController: UIViewController {
     var presenter: BookDetailsViewOutputProtocol!
     
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemGroupedBackground
+        return view
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemGroupedBackground
+        return view
+    }()
+    
     private lazy var bookCover: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 300))
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.layer.shadowColor = UIColor.darkGray.cgColor
-        view.layer.shadowRadius = 200
-        view.layer.shadowOffset = CGSize(width: 50, height: 50)
-        view.backgroundColor = .red
         return view
     }()
     
@@ -37,26 +47,64 @@ final class BookDetailsViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
+    private lazy var authorLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 20)
+        view.textAlignment = .center
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var descriptionlLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textAlignment = .center
+        view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(bookCover)
-        setCoverContraints()
-        view.addSubview(nameLabel)
-        setNameLabelConsteraints()
+        navigationItem.largeTitleDisplayMode = .never
         presenter.showBookInfo()
+        setScroolViewConstraints()
+        setCoverContraints()
+    }
+    
+    private func setScroolViewConstraints() {
+        view.addSubview(scrollView)
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        scrollView.addSubview(contentView)
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
     private func setCoverContraints() {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(bookCover.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30))
-        constraints.append(bookCover.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor))
-        constraints.append(bookCover.widthAnchor.constraint(lessThanOrEqualToConstant: 300))
-        constraints.append(bookCover.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor))
-        
-        NSLayoutConstraint.activate(constraints)
-        
+        contentView.addSubview(bookCover)
+        bookCover.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        bookCover.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 60).isActive = true
+        bookCover.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60).isActive = true
+        bookCover.heightAnchor.constraint(equalToConstant: view.frame.height / 3).isActive = true
+        contentView.addSubview(nameLabel)
+        nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: bookCover.bottomAnchor, constant: 20).isActive = true
+        nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        contentView.addSubview(authorLabel)
+        authorLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        authorLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
+        authorLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        contentView.addSubview(descriptionlLabel)
+        descriptionlLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        descriptionlLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20).isActive = true
+        descriptionlLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        descriptionlLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         
         // Shadow settings
         bookCover.layer.cornerRadius = 25
@@ -66,20 +114,14 @@ final class BookDetailsViewController: UIViewController {
         bookCover.layer.shadowOpacity = 0.9
     }
     
-    private func setNameLabelConsteraints() {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(nameLabel.topAnchor.constraint(equalTo: bookCover.bottomAnchor, constant: 10))
-        constraints.append(nameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
-        constraints.append(nameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-        
-        NSLayoutConstraint.activate(constraints)
-    }
 }
 
 extension BookDetailsViewController: BookDetailsViewInputProtocol {
     func displayBookInfo(from book: Book) {
         navigationItem.title = book.name
-        nameLabel.text = book.author
+        nameLabel.text = book.name
+        authorLabel.text = book.author
+        descriptionlLabel.text = book.description
         bookCover.image = book.imageData
     }
 }

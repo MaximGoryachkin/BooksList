@@ -28,7 +28,7 @@ final class BooksListViewController: UITableViewController {
         configurator.configurate(with: self)
         presenter.viewDidLoad()
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.section.rows.count
     }
@@ -62,8 +62,8 @@ final class BooksListViewController: UITableViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
         navigationItem.title = "Books"
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = UISearchController()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

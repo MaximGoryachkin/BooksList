@@ -26,5 +26,4 @@ final class BooksListRouter: BooksListRouterProtocol {
         viewController.show(bookDetailsVC, sender: book)
     }
     
-    
 }
