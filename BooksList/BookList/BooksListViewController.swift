@@ -61,8 +61,10 @@ final class BooksListViewController: UITableViewController {
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
-        navigationItem.title = "Books"
+        //title = "Books"
+        title = "Books"
         navigationItem.searchController = UISearchController()
+        navigationController?.navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

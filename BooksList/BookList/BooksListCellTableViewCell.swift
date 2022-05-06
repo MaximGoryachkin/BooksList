@@ -12,7 +12,7 @@ protocol CellModelRepresentable {
 }
 
 class BooksListCellTableViewCell: UITableViewCell, CellModelRepresentable {
-    static let identifier = "MainCellTableViewCell"
+    static let identifier = "BooksListCellTableViewCell"
     
     var viewModel: BooksListCellViewModelProtocol? {
         didSet {
